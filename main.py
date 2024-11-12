@@ -4,6 +4,16 @@ from bs4 import BeautifulSoup
 import sys
 from tqdm import tqdm
 from gpt4all import GPT4All
+import re
+
+        
+def write_file(soup):
+    # Replace `./output/Images/` with `./Images/`
+    updated_html_content = re.sub(r'\.\/output\/Images\/', './Images/', soup.prettify())
+
+    with open(f"./output/{filename}_latt_svenska.html", 'w') as output:
+        output.write(updated_html_content)
+
 
 filepath = sys.argv[1]
 print("Starting...")
@@ -17,7 +27,7 @@ pypandoc.convert_file(filepath,
                   to='html5',
                   extra_args=[
                       '--read=epub',
-                      f'--extract-media={pathname}/output',
+                      f'--extract-media={pathname}/output',   
                       '--wrap=none',
                       '--standalone',
                   ],
@@ -48,11 +58,9 @@ with open('./output/index.html') as f:
                     new_text = model.generate(f"with the following text in quotes: '{element.text}' which is in swedish. Convert it to easy swedish that can be understood at A2 level. Output ONLY the converted text and nothing more! If the text cannot be converted output the original. DO NOT add any comments. remove '. speak in SWEDISH.", max_tokens=2048)
                     element.string = new_text + ' ۞'
                     # update the file for faster feedback
-                    with open(f"./output/{filename}_latt_svenska.html", 'w') as output:
-                        output.write(soup.prettify())
-        
-        with open(f"./output/{filename}_latt_svenska.html", 'w') as output:
-            output.write(soup.prettify())
+                    write_file(soup)
+                    
+        write_file(soup)
 
         pypandoc.convert_text(soup.prettify(), 'epub', format='html', outputfile=f"./output/{filename}_latt_svenska.epub")
         print("Done writing new book to ", f"./output/{filename}_latt_svenska.epub")
