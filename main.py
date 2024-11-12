@@ -5,8 +5,6 @@ import sys
 from tqdm import tqdm
 from gpt4all import GPT4All
 
-
-
 filepath = sys.argv[1]
 print("Starting...")
 print("Extracting epub file: " + filepath);
@@ -30,14 +28,12 @@ pypandoc.convert_file(filepath,
                  )
 print("Done extracting epub file")
 
-
 with open('./output/index.html') as f:
         html_doc = f.read()
         soup = BeautifulSoup(html_doc, 'html.parser')
 
         descendants_list = list(soup.descendants)
         total_elements = len(descendants_list) - 1
-
 
 
         for index, element in tqdm(enumerate(descendants_list), total=total_elements, desc="Processing blocks", unit="block"):
