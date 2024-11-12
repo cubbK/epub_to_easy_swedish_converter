@@ -1,6 +1,6 @@
 # Epub to Lätt Svenska Converter :turtle: :books:
 
-Convert your books to easy swedish with the help of LLMs
+Convert your books to easy swedish with the help of LLMs(locally ran)
 
 Supports _swedish_ to _easy swedish_ conversions.
 
