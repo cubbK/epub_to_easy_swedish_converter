@@ -4,7 +4,7 @@ Convert your books to easy swedish with the help of LLMs
 
 Supports both _swedish_ to _easy swedish_ conversions and _english_ to _easy swedish_ conversions.
 
-Adaptable to any language
+Adaptable to any language.
 
 ## Why?
 
