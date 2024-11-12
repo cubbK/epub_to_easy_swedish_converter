@@ -1,11 +1,13 @@
 import pypandoc
 import os
 from bs4 import BeautifulSoup
+from pypandoc.pandoc_download import download_pandoc
+
+download_pandoc()
 
 filepath = "/Users/dan.popa/work/epub_to_latt_svenska_converter/ebook2.epub"
 pathname, filename = os.path.split(filepath)
 targetfilename = 'index.html'
-
 
 pypandoc.convert_file(filepath,
                   format='epub',
