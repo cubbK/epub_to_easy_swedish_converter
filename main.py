@@ -51,9 +51,6 @@ with open('./output/index.html') as f:
             if element.name in ['p', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'li']:
                 if(len(element.text) < 30) :
                     continue
-                
-                if("۞" in element.text):
-                    continue
 
                 print("Processing: ", element.text, index)
                 model = GPT4All("Meta-Llama-3-8B-Instruct.Q4_0.gguf") # downloads / loads a 4.66GB LLM
