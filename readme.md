@@ -27,13 +27,15 @@ The conversion on my m1 pro takes
 
 - ~100 minutes on the book with 45000 words(average book size) `example.epub`
 
+But it's possible to read the partial file by opening ./output/\*.epub_latt_svenska.html. The paragraphs that have been converted will have a ۞ sign.
+
 ## Why?
 
 I want to read swedish books. Unfortunatelly I'm not at the level that I can understand ones I actually want to read, thus this tool.
 
 ## How?
 
-It converts the epub to html with pandadoc and then for every paragraph it runs an LLM prompt with https://docs.gpt4all.io/index.html and bundles the modified content back into .epub. 
+It converts the epub to html with pandadoc and then for every paragraph it runs an LLM prompt with https://docs.gpt4all.io/index.html and bundles the modified content back into .epub.
 
 Maintains book special fromatting and images.
 
