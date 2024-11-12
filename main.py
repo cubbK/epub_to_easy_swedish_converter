@@ -46,7 +46,10 @@ with open('./output/index.html') as f:
                 model = GPT4All("Meta-Llama-3-8B-Instruct.Q4_0.gguf") # downloads / loads a 4.66GB LLM
                 with model.chat_session():
                     new_text = model.generate(f"with the following text in quotes: '{element.text}' which is in swedish. Convert it to easy swedish that can be understood at A2 level. Output ONLY the converted text and nothing more! If the text cannot be converted output the original. DO NOT add any comments. remove '. speak in SWEDISH.", max_tokens=2048)
-                    element.string = new_text
+                    element.string = new_text + ' ۞'
+                    # update the file for faster feedback
+                    with open(f"./output/{filename}_latt_svenska.html", 'w') as output:
+                        output.write(soup.prettify())
         
         with open(f"./output/{filename}_latt_svenska.html", 'w') as output:
             output.write(soup.prettify())
